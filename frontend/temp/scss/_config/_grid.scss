@@ -1,0 +1,56 @@
+.header {grid-area: header;}
+.footer {grid-area: footer;}
+
+// * ``` Сетка страницы```
+
+// .main {
+// 	grid-area: pageContent;
+
+// 	display: grid;
+// 	grid-template-columns: repeat(12, 1fr);
+// 	grid-auto-rows: auto;
+// }
+
+
+// * ``` Сетка макета ```
+.wrap {
+	display: grid;
+	min-height: 100%;
+
+	// Линии
+	grid-template-rows: 
+		$header-h // Header
+		minmax(100vh, auto) // Main
+		minmax($footer-h, auto);// Footer
+
+	// Для настольных устройств
+	@media (max-width: $laptopL), (min-width: $laptopL) {
+		grid-template-areas: 
+		"header header header"
+		" . pageContent . "
+		"footer footer footer";
+		// Колонки
+		grid-template-columns: 
+			1fr 
+			// Контент
+			minmax(
+				$tablet, 
+				$laptopL-content
+			) 
+			1fr;
+	}
+
+	// Для мобильных устройств
+	@media (max-width: $tablet) {
+
+		grid-template-areas: 
+		"header header header"
+		" . pageContent . "
+		"footer footer footer";
+		// Колонки
+		grid-template-columns: 
+			1fr 
+			minmax($mobileS, $tablet) // Контент
+			1fr;
+	}
+}

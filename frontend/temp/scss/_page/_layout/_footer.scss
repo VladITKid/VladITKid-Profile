@@ -1,0 +1,9 @@
+.footer {
+    color: $white;
+    background-color: $darkblue;
+    &__body {}
+    &__copy {
+        font-weight: 700;
+        font-size: 1em;
+    }
+}

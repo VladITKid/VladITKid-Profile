@@ -1,0 +1,7 @@
+// * Size Control — Функция контроля размеров
+:root {
+    --SCM: 1vw; // Множитель
+}
+@function SCF($param) {
+    @return calc(#{$param} * var(--SCM));
+}

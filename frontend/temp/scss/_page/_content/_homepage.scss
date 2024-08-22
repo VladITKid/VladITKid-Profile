@@ -1,0 +1,274 @@
+.homepage {
+    grid-area: pageContent;
+
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: 600px auto 700px;
+	grid-row-gap: 40px;
+
+    &__sect {
+        // ``` Позиционирование по колонкам, em и SCM
+        @media (min-width: $laptopL) {
+            grid-column: 3/-3;
+        }
+        @media (max-width: $laptopL) {
+            --SCM: 1px;
+            font-size: 1em;
+            grid-column: 2/-2;
+        }
+        @media (max-width: $laptop) {
+            grid-column: 1/-1;
+        }
+        @media (max-width: $tablet) {
+            --SCM: .9px;
+            font-size: .8em;
+            grid-column: 1/-1;
+        }
+
+        // * Заголовки
+        &-title {
+            &--L {
+                margin-top: SCF(18);
+                font-weight: 900;
+                font-size: 3.2em;
+            }
+            &-text {
+                &--highlighted {
+                    color: $fontColor-Highlighted;
+                }
+                &--small {
+                    display: flex;
+
+                    font-weight: 700;
+                    font-size: .6em;
+                    margin-top: SCF(-6);
+
+                    // Позиционирование вправо
+                    &-to-right {justify-content: right;}
+                }
+            }
+        }
+
+        // * ``` Секции ```
+        // * Основная
+        &-primary {
+            height: SCF(600);
+            margin-top: SCF(30);
+            padding: 0 SCF(20);
+
+            display: flex;
+            justify-content: right;
+
+            background-image: url('../assets/img/sprite-sections.png');
+            background-position: 0 0;
+            background-size: SCF(600) auto;
+            background-repeat: no-repeat;
+
+            &-content {
+                position: relative;
+                width: SCF(500);
+
+                display: flex;
+                flex-direction: column;
+                justify-content: right;
+                align-items: right;
+                text-align: right;
+                gap: SCF(30);
+            }
+
+            &-bubble {
+                position: relative;
+                z-index: 1;
+
+                width: SCF(408);
+                height: SCF(130);
+                padding: 0 SCF(20);
+
+                font-size: 1em;
+                font-weight: 700;
+                
+                display: flex;
+                align-items: center;
+                text-align: left;
+                margin-left: auto;
+
+                background-color: $white;
+                border: SCF(3) solid $darkblue;
+                border-radius: SCF(10);
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 18%;
+                    left: SCF(-40);
+                    width: SCF(40);
+                    height: SCF(40);
+
+                    background-size: SCF(40) SCF(200);
+                    background-image: url('../assets/img/sprite-icons.png');
+                    background-position: 0 50%;
+                }
+            }
+        }
+        // * С пакетами услуг
+        &-1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: end;
+
+            &-title {
+                font-weight: 900;
+                font-size: 2.2em;
+                margin-bottom: SCF(4);
+            }
+            &-hr { // Линия со звёздочкой
+                height: SCF(50);
+                width: SCF(50);
+                background-repeat: no-repeat;
+                background-size: SCF(50) SCF(250);
+                background-image: url('../assets/img/sprite-icons.png');
+                background-position: 0 75%;
+
+                &::before {
+                    content: '';
+                    left: 0;
+                    width: 100%;
+                    height: #{SCF(4)};
+                    margin: #{SCF(23)} 0;
+                    position: absolute;
+                    background-image: linear-gradient(90deg, 
+                        $darkblue 0% #{calc(50% - #{SCF(40)})}, 
+                        transparent #{calc(50% - #{SCF(40)})} #{calc(50% + #{SCF(40)})}, 
+                        $darkblue #{calc(50% + #{SCF(40)})} 100%);
+                }
+}
+            &-slider { // Слайдер
+                position: relative;
+                height: SCF(450);
+                width: 100%;
+
+                &-next-btn { // Кнопка "Следующий слайд"
+                    position: absolute;
+                    top: SCF(365);
+                    left: SCF(290);
+                    z-index: 7;
+
+                    padding-left: 2em;
+                    color: $white;
+                    font-weight: 800;
+                    font-size: SCF(20);
+                    width: 4.5em;
+                    height: 2em;
+                    border-radius: SCF(50);
+                    background-color: $darkblue;
+                    box-shadow: 
+                        0 0 0 .3em $darkblue,
+                        0 0 SCF(20) SCF(1) $darkblue;
+
+                    background-repeat: no-repeat;
+                    background-size: SCF(40) SCF(200);
+                    background-image: url('../assets/img/sprite-icons.png');
+                    background-position: 0 100%;
+                }
+
+                &-slide {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: left;
+                    
+                    align-items: left;
+                    text-align: left;
+                    gap: SCF(35);
+                    
+                    background-color: $lightblue-100;
+                    background-image: url('../assets/img/sprite-sections.png');
+                    background-position: 100% 50%;
+                    background-size: SCF(450) auto;
+                    background-repeat: no-repeat;
+                    
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    padding: 0 SCF(20);
+
+                    // Стили состояний
+                    z-index: 3;
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: opacity 1s;
+                    &--active {
+                        opacity: 1;
+                        pointer-events: all;
+                    }
+
+                    &--1 {background-position: 100% 75%;}
+                    &--2 {background-position: 100% 50%;}
+                    &--3 {background-position: 100% 25%;}
+
+                    &-list {
+                        line-height: 1.7em;
+                        font-size: 1.3em;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+        // * Портфолио
+        &-2 {
+            height: SCF(700);
+            padding: 0 SCF(20);
+
+            display: flex;
+            justify-content: right;
+
+            background-image: url('../assets/img/sprite-sections.png');
+            background-position: 0 100%;
+            background-size: SCF(700) auto;
+            background-repeat: no-repeat;
+
+            &-content {
+                position: relative;
+                width: SCF(500);
+
+                display: flex;
+                flex-direction: column;
+                justify-content: right;
+                align-items: right;
+                text-align: right;
+                gap: SCF(30);
+            }
+
+            &-list {
+                width: inherit;
+                border-radius: SCF(10);
+                overflow: hidden;
+                box-shadow: 0 0 0 SCF(3) $darkblue;
+
+                &-wrap {
+                    display: flex;
+                    width: SCF(420);
+                    margin-left: auto;
+                }
+
+                &-item {
+                    padding-left: 4.5em;
+                    display: flex;
+                    align-items: center;
+                    font-size: 1.2em;
+                    font-weight: 700;
+                    height: 3.6em;
+                    background-image: url('../assets/img/sprite-portfolio-icons.png');
+                    background-repeat: no-repeat;
+                    background-size: 3.6em;
+
+                    &:nth-child(odd) {background-color: $lightblue-200;}
+                    &:nth-child(even) {background-color: $lightblue-100;}
+
+                    &-1 {background-position: 0 0;}
+                    &-2, &-3, &-4 {background-position: 0 100%;}
+                }
+            }
+        }
+    }
+}
