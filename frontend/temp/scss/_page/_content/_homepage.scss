@@ -3,12 +3,14 @@
 
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
-	grid-template-rows: 600px auto 700px;
+	grid-template-rows: 600px 600px 700px;
 	grid-row-gap: 40px;
 
     &__sect {
         // ``` Позиционирование по колонкам, em и SCM
         @media (min-width: $laptopL) {
+            --SCM: 1px;
+            font-size: 1em;
             grid-column: 3/-3;
         }
         @media (max-width: $laptopL) {
@@ -52,6 +54,7 @@
         // * ``` Секции ```
         // * Основная
         &-primary {
+            position: relative;
             height: SCF(600);
             margin-top: SCF(30);
             padding: 0 SCF(20);
@@ -63,6 +66,27 @@
             background-position: 0 0;
             background-size: SCF(600) auto;
             background-repeat: no-repeat;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: SCF(200);
+                left: SCF(160);
+                width: SCF(120);
+                height: SCF(120);
+
+                background-size: 100%;
+                background-image: url('../assets/img/reactor.png');
+                background-position: 0% 0%;
+
+                @keyframes homepageSectPrimary-circleRotation {
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                animation: homepageSectPrimary-circleRotation 2s linear infinite;
+            }
 
             &-content {
                 position: relative;

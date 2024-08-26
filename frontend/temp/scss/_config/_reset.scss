@@ -15,36 +15,3 @@ table{border-collapse:collapse;}
 // Для навигации
 .header{width:100%;height:$header-h;position:fixed;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index: 100;}
 .footer{display:flex;justify-content:center;align-items:center;}
-
-// * ``` Модификаторы ```
-// Кнопки
-.btn--pink {
-    position: relative;
-    z-index: 1;
-
-    font-weight: 700;
-    font-size: 1.4em;
-    border-radius: 10px;
-
-    width: 12em;
-    height: 3.2em;
-
-    color: $white;
-    background-image: radial-gradient(at 70% 110%, #c9caff, #febfdb);
-
-    &::after {
-        content: '';
-        filter: blur(8px);
-        position: absolute;
-        border-radius: 10px;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        background-image: radial-gradient(at 70% 110%, #c9caff, #febfdb);
-        width: 12em;
-        height: 3.2em;
-    }
-
-    // Позиционирование вправо
-    &-to-right {margin-left: auto;}
-}
