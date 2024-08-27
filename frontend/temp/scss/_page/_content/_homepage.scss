@@ -3,7 +3,7 @@
 
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
-	grid-template-rows: 600px 600px 700px;
+	grid-template-rows: repeat(3, auto);
 	grid-row-gap: 40px;
 
     &__sect {
@@ -24,6 +24,11 @@
         @media (max-width: $tablet) {
             --SCM: .9px;
             font-size: .8em;
+            grid-column: 1/-1;
+        }
+        @media (max-width: $mobile) {
+            --SCM: .8px;
+            font-size: .7em;
             grid-column: 1/-1;
         }
 
@@ -276,7 +281,7 @@
                 }
 
                 &-item {
-                    padding-left: 4.5em;
+                    padding-left: .7em;
                     display: flex;
                     align-items: center;
                     font-size: 1.2em;
@@ -289,8 +294,14 @@
                     &:nth-child(odd) {background-color: $lightblue-200;}
                     &:nth-child(even) {background-color: $lightblue-100;}
 
-                    &-1 {background-position: 0 0;}
-                    &-2, &-3, &-4 {background-position: 0 100%;}
+                    &-1 {background-position: 1.9em 0;}
+                    &-2, &-3, &-4 {background-position: 1.9em 100%;}
+
+                    &-num {
+                        font-weight: 800;
+                        font-size: .9em;
+                        margin-right: 4.4em;
+                    }
                 }
             }
         }
