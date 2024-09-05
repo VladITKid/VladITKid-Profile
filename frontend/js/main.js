@@ -1,3 +1,26 @@
+// * ``` Курсор ```
+document.addEventListener('DOMContentLoaded', () => {
+    const createCursor = document.createElement('div');
+    createCursor.className = 'cursor';
+    document.body.appendChild(createCursor);
+
+    const customCursor = document.querySelector('.cursor');
+
+    document.addEventListener('mousemove', (e) => {
+        customCursor.style.left = `${e.clientX}px`;
+        customCursor.style.top = `${e.clientY}px`;
+    });
+
+    // Показываем курсор, когда мышь входит в окно
+    document.addEventListener('mouseenter', () => {
+        customCursor.style.display = 'block';
+    });
+
+    // Скрываем курсор, когда мышь выходит из окна
+    document.addEventListener('mouseleave', () => {
+        customCursor.style.display = 'none';
+    });
+});
 // * ``` Слайдер на главной ```
 document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.homepage__sect-1-slider-slide'); // Все слайды
