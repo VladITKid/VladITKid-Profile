@@ -9,6 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousemove', (e) => {
         customCursor.style.left = `${e.clientX}px`;
         customCursor.style.top = `${e.clientY}px`;
+
+        // Проверяем, находится ли курсор над кликабельным элементом
+        const hoveredElement = document.elementFromPoint(e.clientX, e.clientY);
+        if (hoveredElement && hoveredElement.matches('a, button, input[type="button"], input[type="submit"]')) {
+            customCursor.style.backgroundPosition = '100% 0';
+        } else {
+            customCursor.style.backgroundPosition = '0% 0%';
+        }
     });
 
     // Показываем курсор, когда мышь входит в окно
@@ -20,7 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mouseleave', () => {
         customCursor.style.display = 'none';
     });
+
+    // Сбрасываем позицию при скролле и проверяем наличие кликабельного элемента
+    document.addEventListener('scroll', () => {
+        const rect = customCursor.getBoundingClientRect();
+        const hoveredElement = document.elementFromPoint(rect.left, rect.top);
+        if (hoveredElement && hoveredElement.matches('a, button, input[type="button"], input[type="submit"]')) {
+            customCursor.style.backgroundPosition = '100% 0';
+        } else {
+            customCursor.style.backgroundPosition = '0% 0%';
+        }
+    });
 });
+
+
 // * ``` Слайдер на главной ```
 document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.homepage__sect-1-slider-slide'); // Все слайды

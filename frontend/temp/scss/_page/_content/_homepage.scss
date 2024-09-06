@@ -72,27 +72,6 @@
             background-size: SCF(600) auto;
             background-repeat: no-repeat;
 
-            &::after {
-                content: '';
-                position: absolute;
-                top: SCF(200);
-                left: SCF(160);
-                width: SCF(120);
-                height: SCF(120);
-
-                background-size: 100%;
-                background-image: url('../assets/img/reactor.png');
-                background-position: 0% 0%;
-
-                @keyframes homepageSectPrimary-circleRotation {
-                    100% {
-                        transform: rotate(360deg);
-                    }
-                }
-
-                animation: homepageSectPrimary-circleRotation 2s linear infinite;
-            }
-
             &-content {
                 position: relative;
                 width: SCF(500);

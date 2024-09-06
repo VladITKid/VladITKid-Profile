@@ -1,26 +1,26 @@
+// Скрываю на мобилках
+@media (max-width: $tablet) {
+    .cursor {
+        display: none !important;
+    }
+    body, button {
+        cursor: auto !important;
+    }
+}
 .cursor {
     z-index: 1001;
     position: fixed;
-    width: 90px; // Размер кастомного курсора
-    height: 90px;
+    display: flex;
+    width: 60px; // Размер кастомного курсора
+    height: 60px;
     padding: 15px;
     background-image: url('../assets/img/sprite-cursor.png');
-    background-position: 100% 0%;
+    background-position: 0% 0%;
     background-size: 200% 100%;
     background-repeat: no-repeat;
     pointer-events: none; // Курсор не будет блокировать взаимодействие с элементами на странице
-    transform: rotate(-45deg) translateY(-50%); // Центрирование изображения под курсором
-
-    &:after {
-        content: '';
-        background-image: url('../assets/img/sprite-cursor.png');
-        background-position: 0% 0%;
-        background-size: 200% 100%;
-        width: 60px;
-        height: 60px;
-        position: fixed;
-    }
+    transform: translateY(-10%) translateX(-30%); // Центрирование изображения под курсором
 }
 body, button {
-    cursor: none !important;
+    cursor: none;
 }
