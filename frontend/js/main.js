@@ -6,41 +6,85 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const customCursor = document.querySelector('.cursor');
 
+    const updateCursorBackgroundPosition = (hoveredElement) => {
+        if (hoveredElement && hoveredElement.matches('a, button, input[type="button"], input[type="submit"]')) {
+            customCursor.style.backgroundPosition = '35% 0';
+        } else if (document.getSelection().toString().length > 0) {
+            customCursor.style.backgroundPosition = '65% 0';
+        } else {
+            customCursor.style.backgroundPosition = '0% 0%';
+        }
+    };
+
     document.addEventListener('mousemove', (e) => {
         customCursor.style.left = `${e.clientX}px`;
         customCursor.style.top = `${e.clientY}px`;
 
-        // Проверяем, находится ли курсор над кликабельным элементом
         const hoveredElement = document.elementFromPoint(e.clientX, e.clientY);
-        if (hoveredElement && hoveredElement.matches('a, button, input[type="button"], input[type="submit"]')) {
-            customCursor.style.backgroundPosition = '100% 0';
-        } else {
-            customCursor.style.backgroundPosition = '0% 0%';
-        }
+        updateCursorBackgroundPosition(hoveredElement);
     });
 
-    // Показываем курсор, когда мышь входит в окно
     document.addEventListener('mouseenter', () => {
         customCursor.style.display = 'block';
     });
 
-    // Скрываем курсор, когда мышь выходит из окна
     document.addEventListener('mouseleave', () => {
         customCursor.style.display = 'none';
     });
 
-    // Сбрасываем позицию при скролле и проверяем наличие кликабельного элемента
     document.addEventListener('scroll', () => {
         const rect = customCursor.getBoundingClientRect();
         const hoveredElement = document.elementFromPoint(rect.left, rect.top);
-        if (hoveredElement && hoveredElement.matches('a, button, input[type="button"], input[type="submit"]')) {
-            customCursor.style.backgroundPosition = '100% 0';
-        } else {
-            customCursor.style.backgroundPosition = '0% 0%';
-        }
+        updateCursorBackgroundPosition(hoveredElement);
+    });
+
+    document.addEventListener('selectionchange', () => {
+        const rect = customCursor.getBoundingClientRect();
+        const hoveredElement = document.elementFromPoint(rect.left, rect.top);
+        updateCursorBackgroundPosition(hoveredElement);
     });
 });
 
+// * ``` Эффекты клика ```
+// Создание блока для визуального эффекта
+const createCursorClickEffect = document.createElement('span');
+createCursorClickEffect.className = 'cursor-click-effect';
+document.body.appendChild(createCursorClickEffect);
+
+const cursorClickEffect = document.querySelector('.cursor-click-effect');
+
+// Время активности визуального эффекта
+const cursorClickEffectTimeout = 1000; // Таймаут для анимации визуального эффекта
+
+document.addEventListener('DOMContentLoaded', () => {
+    let animationTimeout; // Переменная для хранения таймаута анимации
+
+    // Функция для обновления позиции блока эффектов относительно положения курсора
+    function updateCursorPosition(e) {
+        cursorClickEffect.style.left = `${e.clientX}px`;
+        cursorClickEffect.style.top = `${e.clientY}px`;
+    }
+
+    // Основная функция для активации эффекта
+    function cursorClickEffectAnimation(e) {
+        // Останавливаем текущую анимацию и сбрасываем таймаут
+        clearTimeout(animationTimeout);
+
+        // Обновляем позицию на месте клика
+        updateCursorPosition(e);
+
+        // Активируем эффект
+        cursorClickEffect.classList.add('cursor-click-effect--active');
+
+        // Устанавливаем новый таймаут для сброса анимации
+        animationTimeout = setTimeout(() => {
+            cursorClickEffect.classList.remove('cursor-click-effect--active');
+        }, cursorClickEffectTimeout);
+    }
+
+    // Применение эффекта по клику на документе
+    document.addEventListener('click', cursorClickEffectAnimation);
+});
 
 // * ``` Слайдер на главной ```
 document.addEventListener('DOMContentLoaded', () => {
