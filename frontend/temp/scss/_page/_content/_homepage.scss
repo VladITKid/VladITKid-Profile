@@ -251,7 +251,7 @@
                 width: inherit;
                 border-radius: SCF(10);
                 overflow: hidden;
-                box-shadow: 0 0 0 SCF(3) $darkblue, 0 SCF(4) SCF(20) 0 $darkblue;
+                box-shadow: 0 0 0 SCF(3) $darkblue;
 
                 &-wrap {
                     display: flex;
@@ -273,12 +273,13 @@
                     &:nth-child(odd) {background-color: $lightblue-200;}
                     &:nth-child(even) {background-color: $lightblue-100;}
 
-                    &-1, &-3 {background-position: 2.7em 0;}
-                    &-2, &-4, &-5 {background-position: 2.7em 100%;}
+                    &-1 {background-position: 3em 0;}
+                    &-2, &-4, &-5 {background-position: 3em 50%;}
+                    &-3 {background-position: 3em 100%;}
 
                     &-num {
-                        width: 2.7em;
-                        height: 2.7em;
+                        width: 2.6em;
+                        height: 2.6em;
                         
                         display: flex;
                         justify-content: center;
@@ -287,12 +288,11 @@
                         border-radius: 100%;
                         font-weight: 800;
                         font-size: .8em;
-                        margin-right: 5.6em;
-                        color: $darkblue;
-                        border: SCF(1) solid $darkblue;
+                        margin-right: 5.7em;
+                        background-color: $darkblue;
 
-                        &--light {background-color: $lightblue-100;box-shadow: 0 SCF(4) SCF(10) 0 #324b6060;}
-                        &--dark {background-color: $lightblue-200;box-shadow: 0 SCF(4) SCF(10) 0 #324b6079;}
+                        &--light {color: $lightblue-200;}
+                        &--dark {color: $lightblue-100;}
                     }
                 }
             }

@@ -45,47 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// * ``` Эффекты клика ```
-// Создание блока для визуального эффекта
-const createCursorClickEffect = document.createElement('span');
-createCursorClickEffect.className = 'cursor-click-effect';
-document.body.appendChild(createCursorClickEffect);
-
-const cursorClickEffect = document.querySelector('.cursor-click-effect');
-
-// Время активности визуального эффекта
-const cursorClickEffectTimeout = 1000; // Таймаут для анимации визуального эффекта
-
-document.addEventListener('DOMContentLoaded', () => {
-    let animationTimeout; // Переменная для хранения таймаута анимации
-
-    // Функция для обновления позиции блока эффектов относительно положения курсора
-    function updateCursorPosition(e) {
-        cursorClickEffect.style.left = `${e.clientX}px`;
-        cursorClickEffect.style.top = `${e.clientY}px`;
-    }
-
-    // Основная функция для активации эффекта
-    function cursorClickEffectAnimation(e) {
-        // Останавливаем текущую анимацию и сбрасываем таймаут
-        clearTimeout(animationTimeout);
-
-        // Обновляем позицию на месте клика
-        updateCursorPosition(e);
-
-        // Активируем эффект
-        cursorClickEffect.classList.add('cursor-click-effect--active');
-
-        // Устанавливаем новый таймаут для сброса анимации
-        animationTimeout = setTimeout(() => {
-            cursorClickEffect.classList.remove('cursor-click-effect--active');
-        }, cursorClickEffectTimeout);
-    }
-
-    // Применение эффекта по клику на документе
-    document.addEventListener('click', cursorClickEffectAnimation);
-});
-
 // * ``` Слайдер на главной ```
 document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.homepage__sect-1-slider-slide'); // Все слайды
