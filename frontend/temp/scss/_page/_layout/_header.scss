@@ -114,4 +114,18 @@
         background-color: #6ee368;
         border-radius: 100%;
     }
+    &__vidget {
+        position: fixed;
+        right: 30px;
+        bottom: 20px;
+        height: $header-h;
+        width: $header-h;
+        background-repeat: no-repeat;
+        background-size: 200% 500%;
+        background-image: url('../assets/img/sprite-icons.png');
+        background-position: 100% 75%;
+        animation: vidget-levitating 1.8s infinite linear;
+
+        @keyframes vidget-levitating {50%{transform: translateY(-20px);}}
+    }
 }
