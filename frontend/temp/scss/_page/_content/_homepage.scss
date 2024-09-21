@@ -3,7 +3,7 @@
 
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
-	grid-template-rows: repeat(3, auto);
+	grid-template-rows: repeat(4, auto);
 	grid-row-gap: 40px;
 
     &__sect {
@@ -150,7 +150,7 @@
                         transparent #{calc(50% - #{SCF(40)})} #{calc(50% + #{SCF(40)})}, 
                         $darkblue #{calc(50% + #{SCF(40)})} 100%);
                 }
-}
+            }
             &-slider { // Слайдер
                 position: relative;
                 height: SCF(450);
@@ -191,7 +191,6 @@
                     
                     background-color: $lightblue-100;
                     background-image: url('../assets/img/sprite-sections.png');
-                    background-position: 100% 50%;
                     background-size: SCF(450) auto;
                     background-repeat: no-repeat;
                     
@@ -210,9 +209,9 @@
                         pointer-events: all;
                     }
 
-                    &--1 {background-position: 100% 75%;}
-                    &--2 {background-position: 100% 50%;}
-                    &--3 {background-position: 100% 25%;}
+                    &--1 {background-position: 100% 60%;}
+                    &--2 {background-position: 100% 40%;}
+                    &--3 {background-position: 100% 20%;}
 
                     &-list {
                         line-height: 1.7em;
@@ -231,7 +230,7 @@
             justify-content: right;
 
             background-image: url('../assets/img/sprite-sections.png');
-            background-position: 0 100%;
+            background-position: 0 80%;
             background-size: SCF(700) auto;
             background-repeat: no-repeat;
 
@@ -296,6 +295,23 @@
                     }
                 }
             }
+        }
+        // * Скидка
+        &-3 {
+            position: relative;
+            height: SCF(600);
+            margin-top: SCF(30);
+            padding: 0 SCF(20);
+
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            gap: SCF(20);
+
+            background-image: url('../assets/img/sprite-sections.png');
+            background-position: 100% 100%;
+            background-size: SCF(600) auto;
+            background-repeat: no-repeat;
         }
     }
 }
