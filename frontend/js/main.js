@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(createCursor);
 
     const customCursor = document.querySelector('.cursor');
+    let isCursorVisible = true; // Флаг для отслеживания видимости кастомного курсора
 
+    // Функция для обновления позиции фона курсора
     const updateCursorBackgroundPosition = (hoveredElement) => {
         if (hoveredElement && hoveredElement.matches('a, button, input[type="button"], input[type="submit"]')) {
             customCursor.style.backgroundPosition = '35% 0';
@@ -16,7 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Функция для скрытия и показа курсора
+    const toggleCursorVisibility = (visible) => {
+        customCursor.style.display = visible ? 'block' : 'none';
+        isCursorVisible = visible;
+    };
+
+    // Обработчик движения мыши
     document.addEventListener('mousemove', (e) => {
+        if (!isCursorVisible) return; // Не обновляем позицию, если курсор скрыт
         customCursor.style.left = `${e.clientX}px`;
         customCursor.style.top = `${e.clientY}px`;
 
@@ -24,20 +34,33 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCursorBackgroundPosition(hoveredElement);
     });
 
-    document.addEventListener('mouseenter', () => {
-        customCursor.style.display = 'block';
+    // Обработчик кликов мыши
+    document.addEventListener('mousedown', (e) => {
+        if (e.button === 2) { // Клик правой кнопкой мыши
+            toggleCursorVisibility(false); // Скрыть кастомный курсор
+        } else if (e.button === 0) { // Клик левой кнопкой мыши
+            toggleCursorVisibility(true); // Показать кастомный курсор
+        }
     });
 
+    // Показываем курсор при входе мыши в окно
+    document.addEventListener('mouseenter', () => {
+        if (isCursorVisible) customCursor.style.display = 'block';
+    });
+
+    // Скрываем курсор, когда мышь выходит из окна
     document.addEventListener('mouseleave', () => {
         customCursor.style.display = 'none';
     });
 
+    // Обработчик скролла
     document.addEventListener('scroll', () => {
         const rect = customCursor.getBoundingClientRect();
         const hoveredElement = document.elementFromPoint(rect.left, rect.top);
         updateCursorBackgroundPosition(hoveredElement);
     });
 
+    // Обработчик изменения выделения текста
     document.addEventListener('selectionchange', () => {
         const rect = customCursor.getBoundingClientRect();
         const hoveredElement = document.elementFromPoint(rect.left, rect.top);
