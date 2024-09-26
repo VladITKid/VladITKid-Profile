@@ -140,6 +140,8 @@
     box-shadow: 0 0 3em 0 #324b609b;
 
     &-wrap {
+        opacity: 0;
+        pointer-events: none;
         position: fixed;
         top: $header-h;
         padding-top: $header-h;
@@ -149,13 +151,19 @@
         flex-direction: column;
         align-items: center;
         justify-content: start;
-        background-color: #324b60a0;
+        background-color: #324b60b7;
         z-index: 99;
+        transition: opacity .2s;
+
+        &--active {
+            opacity: 1;
+            pointer-events: all;
+        }
     }
 
     &__user {
         padding: 20px 40px;
-        background-color: #399ba2;
+        background-image: linear-gradient(-135deg, #4c00ff, #ff008c);
         width: 100%;
         display: grid;
         grid-template-columns: 125px auto;
