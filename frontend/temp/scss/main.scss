@@ -19,7 +19,9 @@
 
 // * Page
 // Навигация и объявления
+@import "_page/_layout/_auth";
 @import "_page/_layout/_header";
+@import "_page/_layout/_menu";
 @import "_page/_layout/_footer";
 @import "_page/_layout/_ads";
 // Контент

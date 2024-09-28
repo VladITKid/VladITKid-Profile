@@ -4,7 +4,7 @@
     .cursor {
         display: none !important;
     }
-    body, button {
+    body, button, input[type="text"] {
         cursor: auto !important;
     }
 }
@@ -22,6 +22,6 @@
     pointer-events: none; // Курсор не будет блокировать взаимодействие с элементами на странице
     transform: translateY(-10%) translateX(-30%); // Центрирование изображения под курсором
 }
-body, button {
+body, button, input[type="text"] {
     cursor: none;
 }

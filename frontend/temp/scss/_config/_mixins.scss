@@ -1,0 +1,7 @@
+@mixin userimg {
+    border-radius: 10px;
+    background-size: 200% 500%;
+    background-image: url('../assets/img/sprite-icons.png');
+    background-position: 100% 75%;
+    background-color: #6ee368;
+}

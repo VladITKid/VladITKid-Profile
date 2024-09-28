@@ -7,13 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const customCursor = document.querySelector('.cursor');
     let isCursorVisible = true; // Флаг для отслеживания видимости кастомного курсора
 
-    // Функция для обновления позиции фона курсора
+    // * Функция для обновления позиции фона курсора
     const updateCursorBackgroundPosition = (hoveredElement) => {
+        // Поинтер
         if (hoveredElement && hoveredElement.matches('a, button, input[type="button"], input[type="submit"]')) {
             customCursor.style.backgroundPosition = '35% 0';
-        } else if (document.getSelection().toString().length > 0) {
+        }
+        // Стержень
+        else if (document.getSelection().toString().length > 0 || hoveredElement && hoveredElement.matches('input[type="text"]')) {
             customCursor.style.backgroundPosition = '65% 0';
-        } else {
+        } 
+        // По умолчанию
+        else {
             customCursor.style.backgroundPosition = '0% 0%';
         }
     };

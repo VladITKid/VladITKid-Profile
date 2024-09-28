@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 	<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -37,7 +37,53 @@
 </head>
 <body class="body">
 	<div class="wrap">
-	<header class="header">
+	<div class="auth-wrap">
+    <div class="auth">
+
+        <div class="auth__register">
+            <h2 class="auth__title">Создать аккаунт</h2>
+            <form action="static/php/sign-up.php" method="post">
+                <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    id="name"
+                    placeholder="Имя"
+                />
+                <input
+                    type="text"
+                    class="form-control"
+                    name="pass"
+                    id="pass"
+                    placeholder="Пароль"
+                />
+                <button class="auth__btn" type="submit">Создать аккаунт</button>
+            </form>
+        </div>
+
+        <div class="auth__login">
+            <h2 class="auth__title">Войти в аккаунт</h2>
+            <form action="static/php/sign-in.php" method="post">
+                <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    id="name"
+                    placeholder="Имя"
+                />
+                <input
+                    type="text"
+                    class="form-control"
+                    name="pass"
+                    id="pass"
+                    placeholder="Пароль"
+                />
+                <button class="auth__btn" type="submit">Войти в аккаунт</button>
+            </form>
+        </div>
+
+    </div>
+</div>	<header class="header">
     <div class="header__body">
         <span class="header__logo"></span>
         <div class="header__contacts">
