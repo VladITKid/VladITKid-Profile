@@ -14,8 +14,14 @@
     box-shadow: 0 0 3em 0 #324b609b;
 
     &-wrap {
-        // opacity: 0;
-        // pointer-events: none;
+        opacity: 0;
+        pointer-events: none;
+        
+        &--active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
         position: fixed;
         padding-top: $header-h*2;
         width: 100%;
@@ -27,11 +33,6 @@
         background-color: #f9faffad;
         z-index: 101;
         transition: opacity .2s;
-
-        &--active {
-            opacity: 1;
-            pointer-events: all;
-        }
     }
 
     &__title {

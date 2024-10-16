@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // * Функция для обновления позиции фона курсора
     const updateCursorBackgroundPosition = (hoveredElement) => {
         // Поинтер
-        if (hoveredElement && hoveredElement.matches('a, button, input[type="button"], input[type="submit"]')) {
+        if (hoveredElement && hoveredElement.matches('a, button, input[type="button"], input[type="submit"], div.menu-btn, h4.header__discount-title, span.header__discount-title-text')) {
             customCursor.style.backgroundPosition = '35% 0';
         }
         // Стержень
