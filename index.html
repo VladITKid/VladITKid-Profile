@@ -30,10 +30,7 @@
 <link type="image/x-icon" rel="icon" href="favicon.ico">
 
 <!-- CSS including -->
-<link rel="stylesheet" type="text/css" href="../frontend/css/main.min.css">
-
-<!-- Bootstrap 5 Grid -->
-<!-- <link rel="stylesheet" href="frontend/css/bootstrap-grid.min.css"> -->	<title>VladITKid: Главная</title>
+<link rel="stylesheet" type="text/css" href="../frontend/css/main.css">	<title>VladITKid: Главная</title>
 </head>
 <body class="body">
 	<div class="wrap">
@@ -103,8 +100,8 @@
 <div class="menu-wrap">
     <div class="menu">
         <div class="menu__user">
-            <div class="userimg"></div>
-            <h4 class="username">Кузьма Кузьмич</h4>
+            <span class="menu__user-userimg"></span>
+            <h4 class="username">Nickname</h4>
             <h4 class="uid">uid: 1<h4>
         </div>
         <div class="menu__settings">
@@ -112,7 +109,11 @@
             <button class="menu__settings-btn menu__settings-btn-language menu__settings-btn-language-spanish">Español</button>
             <button class="menu__settings-btn menu__settings-btn-language menu__settings-btn-language-russian">Русский</button>
         </div>
-        <div class="menu__voucher"></div>
+    </div>
+    <!-- Скидочный купон -->
+    <div class="voucher">
+        <span class="voucher__glare"></span>
+        <div class="voucher__image"></div>
     </div>
 </div>	<main class="main homepage">
 		<section class="sect homepage__sect homepage__sect-primary">

@@ -130,3 +130,24 @@ document.querySelector('.menu-wrap').addEventListener('click', function(event) {
 });
 
 })();
+
+// * ``` Спрайт купона ```
+(() => {
+// Выбираем элемент с классом voucher__image
+const voucherImage = document.querySelector('.voucher__image');
+
+// Функция для случайного выбора позиции фоновой картинки
+function setRandomBackgroundPosition() {
+    // Массив с возможными значениями позиции
+    const positions = ['0 100%', '0 0'];
+    
+    // Генерируем случайный индекс 0 или 1
+    const randomIndex = Math.floor(Math.random() * positions.length);
+    
+    // Устанавливаем случайную позицию фоновой картинки
+    voucherImage.style.backgroundPosition = positions[randomIndex];
+}
+
+// Вызываем функцию для установки случайной позиции
+setRandomBackgroundPosition();
+})();
