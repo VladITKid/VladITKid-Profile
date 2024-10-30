@@ -11,8 +11,9 @@
 
 
     &-wrap {
-        opacity: 0;
         pointer-events: none;
+        opacity: 0;
+
         position: fixed;
         top: $header-h;
         padding-top: $header-h;
